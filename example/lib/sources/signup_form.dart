@@ -34,7 +34,7 @@ class _SignupFormState extends State<SignupForm> {
                   decoration: InputDecoration(labelText: 'Email'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context),
-                    FormBuilderValidators.email(context),
+                    // FormBuilderValidators.email(context),
                   ]),
                 ),
                 const SizedBox(height: 10),
@@ -53,9 +53,7 @@ class _SignupFormState extends State<SignupForm> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
-                    suffixIcon: (_formKey.currentState != null &&
-                            !_formKey.currentState.fields['confirm_password']
-                                .isValid)
+                    suffixIcon: (_formKey.currentState != null && !_formKey.currentState.fields['confirm_password'].isValid)
                         ? const Icon(Icons.error, color: Colors.red)
                         : const Icon(Icons.check, color: Colors.green),
                   ),
@@ -67,8 +65,7 @@ class _SignupFormState extends State<SignupForm> {
                             ? _formKey.currentState.fields['password'].value
                             : null),*/
                     (val) {
-                      if (val !=
-                          _formKey.currentState.fields['password'].value) {
+                      if (val != _formKey.currentState.fields['password'].value) {
                         return 'Passwords do not match';
                       }
                       return null;
@@ -90,8 +87,7 @@ class _SignupFormState extends State<SignupForm> {
                         errorText: field.errorText,
                       ),
                       child: SwitchListTile(
-                        title: Text(
-                            'I have read and accept the terms of service.'),
+                        title: Text('I have read and accept the terms of service.'),
                         onChanged: (bool value) {
                           field.didChange(value);
                         },
